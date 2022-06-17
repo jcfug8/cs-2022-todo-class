@@ -1,0 +1,19 @@
+{
+  "name": "2022-todo-class",
+  "version": "0.0.1",
+  "description": "My cool code school todo app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcfug8/cs-2022-todo-class.git"
+  },
+  "author": "Jace Fugate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcfug8/cs-2022-todo-class/issues"
+  },
+  "homepage": "https://github.com/jcfug8/cs-2022-todo-class#readme"
+}
