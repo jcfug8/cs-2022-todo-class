@@ -27,8 +27,33 @@ const getTodos = function () {
   return todo_db;
 };
 
+const setTodo = function (id, todo) {
+  todo_db[id] = todo;
+  return todo;
+};
+
+const patchTodo = function (id, todoData) {
+  // loop over the data and set each individual item
+  // for (something) {
+  // todo_db[id][something] = todoData[something];
+  //}
+
+  // pull the new data
+  const todo = todo_db[id];
+  return todo;
+};
+
+const deleteTodo = function (id) {
+  const todo = todo_db[id];
+  delete todo_db[id];
+  return todo;
+};
+
 module.exports = {
   addTodo: addTodo,
   getTodo: getTodo,
   getTodos: getTodos,
+  setTodo: setTodo,
+  patchTodo: patchTodo,
+  deleteTodo: deleteTodo,
 };

@@ -36,15 +36,21 @@ app.post("/todo", (req, res) => {
 });
 
 app.delete("/todo", (req, res) => {
-  res.send("delete todo");
+  const id = req.body.id;
+  const todo = persist.deleteTodo(id);
+  res.json(todo);
 });
 
 app.put("/todo", (req, res) => {
-  res.send("put todo");
+  const id = req.body.id;
+  const todo = persist.setTodo(id, req.body);
+  res.json(todo);
 });
 
 app.patch("/todo", (req, res) => {
-  res.send("patch todo");
+  const id = req.body.id;
+  const todo = persist.patchTodo(id, req.body);
+  res.json(todo);
 });
 
 // start server
