@@ -2,6 +2,11 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json());
+
+// pull in db
+const persist = require("./persist");
+
 // put in command line flags
 const flags = require("flags");
 flags.defineNumber("port", 3000, "Ports for the http servier to listen on");
@@ -14,16 +19,20 @@ const dotenv = require("dotenv");
 const port = flags.get("port") || process.env.PORT || 3000;
 
 // set up server paths and handlers
-app.get("/todo", (req, res) => {
-  res.send("get todo");
+app.get("/todo/:id", (req, res) => {
+  const id = req.params.id;
+  const todo = persist.getTodo(id);
+  res.json(todo);
 });
 
 app.get("/todos", (req, res) => {
-  res.send("get todos");
+  res.json(persist.getTodos());
 });
 
 app.post("/todo", (req, res) => {
-  res.send("post todo");
+  console.log(req.body);
+  const todo = persist.addTodo(req.body);
+  res.json(todo);
 });
 
 app.delete("/todo", (req, res) => {
