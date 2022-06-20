@@ -64,8 +64,8 @@ app.listen(port, () => {
 });
 
 setupTodo = function (todoData) {
-  let deadline;
-  let done;
+  let deadline = new Date();
+  let done = false;
   // check deadline and make sure its good
   if (todoData.deadline) {
     deadline = new Date(todoData.deadline);
@@ -76,8 +76,8 @@ setupTodo = function (todoData) {
   }
   // set defaults for eveything else
   return {
-    name: todoReq.name || "",
-    description: todoReq.description || "",
+    name: todoData.name || "",
+    description: todoData.description || "",
     done: done,
     deadline: deadline,
   };
