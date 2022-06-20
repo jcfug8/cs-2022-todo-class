@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js --port=8080"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/jcfug8/cs-2022-todo-class/issues"
   },
-  "homepage": "https://github.com/jcfug8/cs-2022-todo-class#readme"
+  "homepage": "https://github.com/jcfug8/cs-2022-todo-class#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "flags": "^0.1.3"
+  }
 }
