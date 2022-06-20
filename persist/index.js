@@ -32,11 +32,16 @@ const setTodo = function (id, todo) {
   return todo;
 };
 
+// patchTodo - update a todo
 const patchTodo = function (id, todoData) {
   // loop over the data and set each individual item
-  // for (something) {
-  // todo_db[id][something] = todoData[something];
-  //}
+  for (const key in todoData) {
+    todo_db[id][key] = todoData[key];
+  }
+
+  // Object.keys(todoData).forEach(function (key) {
+  //   todo_db[id][key] = todoData[key];
+  // });
 
   // pull the new data
   const todo = todo_db[id];

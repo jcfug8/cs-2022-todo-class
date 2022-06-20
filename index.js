@@ -30,25 +30,30 @@ app.get("/todos", (req, res) => {
 });
 
 app.post("/todo", (req, res) => {
-  console.log(req.body);
-  const todo = persist.addTodo(req.body);
+  // validate the data
+  const vTodo = setupTodo(req.body);
+  const todo = persist.addTodo(vTodo);
   res.json(todo);
 });
 
-app.delete("/todo", (req, res) => {
-  const id = req.body.id;
+app.delete("/todo/:id", (req, res) => {
+  const id = req.params.id;
   const todo = persist.deleteTodo(id);
   res.json(todo);
 });
 
-app.put("/todo", (req, res) => {
-  const id = req.body.id;
-  const todo = persist.setTodo(id, req.body);
+app.put("/todo/:id", (req, res) => {
+  const id = req.params.id;
+  // validate the data
+  const vTodo = setupTodo(req.body);
+  const todo = persist.setTodo(id, vTodo);
   res.json(todo);
 });
 
-app.patch("/todo", (req, res) => {
-  const id = req.body.id;
+app.patch("/todo/:id", (req, res) => {
+  const id = req.params.id;
+  // validate the data
+  // this validation is done a bit different than the post and put
   const todo = persist.patchTodo(id, req.body);
   res.json(todo);
 });
@@ -57,3 +62,23 @@ app.patch("/todo", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+setupTodo = function (todoData) {
+  let deadline;
+  let done;
+  // check deadline and make sure its good
+  if (todoData.deadline) {
+    deadline = new Date(todoData.deadline);
+  }
+  // check done and make sure its good
+  if (todoData.done) {
+    done = todoData.done;
+  }
+  // set defaults for eveything else
+  return {
+    name: todoReq.name || "",
+    description: todoReq.description || "",
+    done: done,
+    deadline: deadline,
+  };
+};
