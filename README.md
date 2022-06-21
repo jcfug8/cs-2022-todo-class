@@ -6,6 +6,7 @@ NVM (node version manager - optional but nice)
 
 # Optional Stuff
 
+1. Put the rest of the config stuff into flags and/or env vars
 1. Caching
    - Memory
 1. Websockets
@@ -24,3 +25,6 @@ NVM (node version manager - optional but nice)
 1. Use async/await
 1. Link Frontend Project to This Backend
 1. Server the UI from this code
+1. Middleware
+   - logging
+   - Dos protection
