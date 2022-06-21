@@ -24,7 +24,8 @@ NVM (node version manager - optional but nice)
 1. Split up files
 1. Use async/await
 1. Link Frontend Project to This Backend
-1. Server the UI from this code
+1. Serve the UI from this code
 1. Middleware
-   - logging
-   - Dos protection
+   - logging (log when each request happen)
+   - Dos protection (rate limit base on ip or other identification)
+1. Docker
