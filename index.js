@@ -9,10 +9,4 @@ const app = require("./server");
 const config = require("./config");
 // set up port number
 
-mongodb.setUpConnectionHandlers(() => {
-  // start server
-  app.listen(config.port, () => {
-    console.log(`Server is running on port ${config.port}`);
-  });
-});
-mongodb.connect();
+mongodb.setUpConnectionHandlers(app);

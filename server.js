@@ -97,4 +97,9 @@ app.patch("/todo/:id", (req, res) => {
     });
 });
 
-module.exports = app;
+module.exports = () => {
+  // start server
+  app.listen(config.port, () => {
+    console.log(`Server is running on port ${config.port}`);
+  });
+};
